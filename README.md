@@ -18,7 +18,7 @@ logger.addHandler(MonologHandler())  # send message to a local syslog
 try:
     fun()
 except ZeroDivisionError:
-    logger.error('fun() call raised an exception', exc_info=True)
+    logger.error('fun() call raised an exception', exc_info=True, extra={'context': {'my_value': 3}}))
 ```
 
 ```
@@ -35,7 +35,8 @@ $ python monolog/examples/example.py
         "  File \"monolog/examples/example.py\", line 32, in <module>\n    fun()\n",
         "  File \"monolog/examples/example.py\", line 7, in fun\n    return 2/0\n"
       ]
-    }
+    },
+    "my_value": 3
   },
   "@fields": {
     "filename": "example.py",
