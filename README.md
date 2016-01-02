@@ -1,5 +1,5 @@
 # monolog-python
-Python's logging formatter compatible with monolog-utils
+Python's logging formatter compatible with monolog-utils. Works great with syslogng/elastic/kibana trio.
 
 ## Example
 
