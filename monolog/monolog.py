@@ -69,6 +69,10 @@ class MonologFormatter(logging.Formatter):
         :type record logging.LogRecord
         :rtype: str
         """
+        context = dict(record.__dict__.get('context', {}))
+
+        # add exception details (if any)
+        context.update(self.formatException(record))
 
         # syslog expects ident string to be present
         ident = 'monolog[%d]: ' % record.process
@@ -76,7 +80,7 @@ class MonologFormatter(logging.Formatter):
         return ident + json.dumps({
             "@timestamp": self.formatTime(record),
             "@message": record.getMessage(),
-            "@context": dict(self.formatException(record)),
+            "@context": context,
             "@fields": {
                 "filename": record.filename,
                 "lineno": int(record.lineno),

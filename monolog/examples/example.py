@@ -25,13 +25,13 @@ logger.addHandler(MonologHandler())
 
 logger.debug('Debug msg')
 logger.info('Foo')
-logger.warning('Foo with context', extra={'foo': 42, 'bar': True})
+logger.warning('Foo with context', extra={'context': {'foo': 42, 'bar': True}})
 
 
 try:
     fun()
 except ZeroDivisionError:
-    logger.error('fun() call raised an exception', exc_info=True)
+    logger.error('fun() call raised an exception', exc_info=True, extra={'context': {'foo': 3}})
 
 
 """
