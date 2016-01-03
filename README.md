@@ -1,6 +1,12 @@
 # monolog-python
 Python's logging formatter compatible with monolog-utils. Works great with syslogng/elastic/kibana trio.
 
+## Install
+
+```
+pip install monolog-python
+```
+
 ## Example
 
 ```python
@@ -20,6 +26,8 @@ try:
 except ZeroDivisionError:
     logger.error('fun() call raised an exception', exc_info=True, extra={'context': {'my_value': 3}}))
 ```
+
+Or run:
 
 ```
 $ python monolog/examples/example.py
